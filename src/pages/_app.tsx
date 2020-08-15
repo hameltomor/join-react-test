@@ -5,6 +5,8 @@ import { useStore } from 'store/index'
 
 import theme from 'styles/theme'
 
+import Layout from 'components/Layout'
+
 import 'styles/css/globals.css'
 
 const NextApp = ({ Component, pageProps }: AppProps) => {
@@ -12,7 +14,9 @@ const NextApp = ({ Component, pageProps }: AppProps) => {
 	return (
 		<ThemeProvider theme={theme}>
 			<MobxProvider store={store}>
-				<Component {...pageProps} />
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
 			</MobxProvider>
 		</ThemeProvider>
 	)
