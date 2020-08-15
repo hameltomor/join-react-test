@@ -1,53 +1,61 @@
-# Candidate Application & Score Calculator
-![JOIN React Test](https://i.imgur.com/msT4Blg.png)
+# Join react test
 
-## Context
+The client side application based on [Next.js](https://nextjs.org/). The goal of this app is to cover [technical requirements](TechnicalNotes.md).
 
-We love to give visual feedback to the recruiters about where their candidate stand in their pipeline.
-Proposed solution consists of 2 screens:
-1. *The applicant screen* - filling it in will send the application to the server
-1. *The candidate list screen* - where all existing and new candidates can be viewed (reflecting input from the previous screen)
+## Getting started
 
-This app needs to display the list of candidates taken from this API: GET https://candidates.free.beeceptor.com/api/candidate
-(If API is not available, use file located in this repository under /data/candidates.json) and send a local request instead.
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## Design
-Screens are provided in /data folder for reference, it doesn't have to look identical, just a visual reference, you can use Material or Bootstrap for UI components
+### Prerequisites
 
-## Requirements
-As a Candidate:
-- [ ] I want to be able to provide my data in application form without any field being required
-- [ ] *[OPTIONAL]* I want to be able to upload my photo
+What things you need to install:
 
-As a Recruiter:
-- [ ] I want to be able to view a list of my candidates
-- [ ] For each application calculate score:
-  - Up to 10% if full name provided
-  - 10% if email provided
-  - 10% if password provided
-  - 20% if phone provided
-  - *[OPTIONAL]* 50% if image uploaded (calculate accordingly if implemented or not)
-- [ ] I want by clicking on the "..." menu, be able to "delete" the candidate (hide from display)
-- [ ] I want by clicking on the "..." menu, be able to change candidate state from "submitted" to "in review" to either "not a fit" or "hired"
-  
-## Technical Notes
-There's no restriction to backend technology, you can e.g.:
-- utilize localStorage for candidate data storage (as your backend) and merge it with existing API data
-- spin up a NodeJS server
+- `node=12.16.1` (recommend to use [nvm](https://github.com/nvm-sh/nvm) to manage version multiple active node.js versions)
 
-If the external API is too slow, make sure it's not visible or felt by the user, find a way to make load/wait time a pleasure.
+### Installing
 
-## Tech Stack
-Use ReactJS with TypeScript, test your code with a preferred library of your choice, also feel free to choose either unit tests or E2E tests with Cypress
-Linter, CSSinJS is a plus
+*If you use `nvm`, you should to execute the next command:
 
-## Instructions
+```bash
+nvm use
+```
 
-- Fork this repo
-- Commit early and often. We want to be able to check your way of thinking
-- Make the app public. Deploy it using the service of your choice (Vercel, Cloud Run, Heroku)
-- Create a pull request so we can review your code and comment on it
+To the first you need to clone project:
 
-## Disclaimer
-You don't have to finish all of that, but we would really love to see a working piece.
-What's more important for us is to see your way of thinking and priority on tasks during implementation!
+```bash
+git clone git@github.com:hameltomor/join-react-test.git
+```
+
+Next you should to install npm dependencies of project:
+
+```bash
+npm install
+# or
+yarn dev
+```
+
+### Usage
+
+You should create the `.env` file with necessary variables. You can take them from the `.env.example`.
+
+#### Development environment
+
+#### Locally
+
+The development environment are based on [node.js](https://nodejs.org/). You can run `dev` environment using next npm command:
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+#### Docker
+
+```bash
+# Build image
+docker build --tag join-react-test:1.0 .
+
+# Run image
+docker run --detach --publish 3000:3000 --name join_react_test join-react-test:1.0
+```

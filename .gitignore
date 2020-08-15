@@ -1,0 +1,77 @@
+# Distribution paths
+/node_modules/
+/tests_output
+
+# Packages
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and sql by databases
+*.log
+*.sql
+*.sqlite
+logs
+
+# Custom
+*.1
+*.bak
+*.orig
+*.swp
+yarn.lock
+.env
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and Editors
+/.idea
+*.sublime-workspace
+/tmp/src-archive/
+# .vscode
+.keys
+test.cmd
+*.jsbeautifyrc
+
+# BACKUP files
+*.backup
+
+# Build files
+/out
+build
+!/out/start.js
+.next
+dist
+
+# Docker Sync
+.unison*
+
+# MongoDB
+/data/mongo/
+mongo_data/*
+
+# API documentation
+public/docs/*
+
+# SSH kyes
+.ssh
+
+# Tests
+coverage
+
+# Translations
+src/messages
+
+# Reports
+reports

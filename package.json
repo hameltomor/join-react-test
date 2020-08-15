@@ -1,0 +1,59 @@
+{
+	"name": "join-react-test",
+	"version": "1.0.0",
+	"private": true,
+	"description": "The single page application with SSR based on next.js",
+	"keywords": [
+		"front",
+		"join",
+		"next.js",
+		"test",
+		"react",
+		"ssr"
+	],
+	"author": {
+		"name": "Daniel Morozov",
+		"email": "hameltomor@gmail.com",
+		"url": "https://github.com/hameltomor"
+	},
+	"scripts": {
+		"analyze": "cross-env ANALYZE=true yarn build",
+		"build": "next build",
+		"build-storybook": "build-storybook",
+		"dev": "next dev",
+		"start": "next start",
+		"storybook": "start-storybook -p 6006",
+		"type-check": "tsc"
+	},
+	"dependencies": {
+		"mobx": "5.15.5",
+		"mobx-react": "6.2.5",
+		"mobx-react-lite": "2.0.7",
+		"next": "9.5.1",
+		"react": "16.13.1",
+		"react-dom": "16.13.1",
+		"styled-components": "5.1.1"
+	},
+	"devDependencies": {
+		"@babel/core": "7.11.1",
+		"@babel/plugin-proposal-class-properties": "7.10.4",
+		"@babel/plugin-proposal-decorators": "7.10.5",
+		"@next/bundle-analyzer": "9.5.1",
+		"@storybook/addon-actions": "6.0.10",
+		"@storybook/addon-essentials": "6.0.10",
+		"@storybook/addon-links": "6.0.10",
+		"@storybook/react": "6.0.10",
+		"@types/node": "14.0.27",
+		"@types/react": "16.9.46",
+		"@types/react-dom": "16.9.8",
+		"@types/styled-components": "5.1.2",
+		"babel-loader": "8.1.0",
+		"babel-plugin-styled-components": "1.11.1",
+		"react-is": "16.13.1",
+		"typescript": "3.9.7"
+	},
+	"engines": {
+		"node": "12.16.1",
+		"npm": "6.13.4"
+	}
+}
