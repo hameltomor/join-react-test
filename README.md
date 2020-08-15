@@ -59,3 +59,17 @@ docker build --tag join-react-test:1.0 .
 # Run image
 docker run --detach --publish 3000:3000 --name join_react_test join-react-test:1.0
 ```
+
+#### Production environment
+
+```bash
+# Build app
+yarn build
+
+# Run builded app
+./node_modules/.bin/next start
+```
+
+### Preview version
+
+Deployed to [vercel](https://join-react-test.vercel.app/).
