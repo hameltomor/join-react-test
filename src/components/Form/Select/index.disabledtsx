@@ -1,0 +1,172 @@
+// import React, { useState, useEffect } from 'react';
+
+// import ValidationError from 'components/Forms/ValidationError';
+
+// import { IFormProps } from 'app/types/Form';
+
+// import * as V from 'common/framework/Validator';
+
+// const Validator = new V.Validator([]);
+
+// export interface IDropdownItem {
+// 	id: string;
+// 	text?: string;
+// 	description?: string;
+// 	icon?: string;
+// 	attr?: any;
+// 	data?: any;
+// }
+
+// export interface IDropdown {
+// 	nameAttr: string;
+// 	wrapperClass?: string;
+// 	validation?: boolean;
+// 	disabled?: boolean;
+// 	defaultIcon?: string;
+// 	placeholder?: string;
+// 	validationRules?: Array<any>;
+// 	forceTouched?: boolean;
+// 	errMessage?: string;
+// 	selectedItem: IFormProps<IDropdownItem>;
+// 	items: IDropdownItem[];
+
+// 	onUpdate?: (formProps: IFormProps<IDropdownItem>, validationResult) => void;
+// }
+
+// const Dropdown: React.FunctionComponent<IDropdown> = (props) => {
+// 	const {
+// 		nameAttr,
+// 		wrapperClass = 'dropdown-wrapper',
+// 		selectedItem,
+// 		disabled,
+// 		validation,
+// 		defaultIcon,
+// 		placeholder = 'Select item',
+// 		forceTouched,
+// 		items,
+// 		errMessage,
+// 		validationRules,
+// 		children,
+// 		onUpdate,
+// 	} = props;
+
+// 	const [validationResult, setValidationResult] = useState({});
+// 	const [dropdownDisplay, setDropdownDisplay] = useState(false);
+
+// 	const updateSelectedItem = (dropdownItem: IDropdownItem) => {
+// 		const updatedSelectedItem: IFormProps<IDropdownItem> = {
+// 			stateParam: nameAttr,
+// 			value: dropdownItem,
+// 			touched: true,
+// 		};
+// 		const validationResult = Validator.validateObject(
+// 			{
+// 				[nameAttr]: updatedSelectedItem.value,
+// 			},
+// 			{
+// 				[nameAttr]: validationRules,
+// 			},
+// 		);
+
+// 		setValidationResult(validationResult);
+// 		onUpdate(updatedSelectedItem, validationResult);
+// 	};
+
+// 	const handleOnInputChange = (event) => {
+// 		// TODO: Implement search
+// 	};
+
+// 	// Forcing validation of fields by outer events
+// 	// (e.g. if parents button clicked)
+// 	const forceValidate = () => {
+// 		if (forceTouched) {
+// 			updateSelectedItem(selectedItem.value);
+// 		}
+// 	};
+
+// 	const onSelectItem = (e: React.MouseEvent, dropdownItem: IDropdownItem) => {
+// 		e.preventDefault();
+// 		updateSelectedItem(dropdownItem);
+// 		hideDropdown();
+// 	};
+
+// 	const inputOnFocus = () => {
+// 		setDropdownDisplay(true);
+// 	};
+
+// 	const hideDropdown = () => {
+// 		setTimeout(() => setDropdownDisplay(false), 250);
+// 	};
+
+// 	useEffect(forceValidate, [forceTouched]);
+
+// 	const getItemIcon = (item: IDropdownItem) => {
+// 		if (!defaultIcon) {
+// 			return null;
+// 		}
+// 		let iconUrl = item.icon || defaultIcon;
+// 		return <img src={iconUrl} alt={item.text} />;
+// 	};
+
+// 	return (
+// 		<div id={`${nameAttr}-dropdown`} className={`${wrapperClass} ${dropdownDisplay ? 'active' : ''}`}>
+// 			{children}
+// 			{
+// 				validationRules && validation && (
+// 					<ValidationError
+// 						fieldName={nameAttr}
+// 						validation={validationResult}
+// 						touched={selectedItem.touched}
+// 						errMessage={errMessage}
+// 					/>
+// 				)
+// 			}
+// 			<div className={`dropdown ${defaultIcon ? 'item-icon' : ''}`}>
+// 				<div
+// 					className={`selected-item ${selectedItem.value.description ? 'description' : ''}`} {...selectedItem.value.attr}
+// 					data-attr={selectedItem.value.attr}
+// 				>
+// 					{getItemIcon(selectedItem.value)}
+// 					<input
+// 						id={nameAttr}
+// 						name={nameAttr}
+// 						type="text"
+// 						placeholder={placeholder}
+// 						onChange={handleOnInputChange}
+// 						onBlur={hideDropdown}
+// 						value={selectedItem.value.text}
+// 						contentEditable={false}
+// 						readOnly
+// 						onFocus={inputOnFocus}
+// 						disabled={disabled}
+// 						autoComplete="off"
+// 					/>
+// 					<label htmlFor={!dropdownDisplay ? nameAttr : null} className="arrow" />
+// 					{selectedItem.value.description && <span className="description">{selectedItem.value.description}</span>}
+// 				</div>
+// 				<ul>
+// 					{items && items.length ? items.map((i) => (
+// 						<li
+// 							key={i.id}
+// 							onClick={(e) => onSelectItem(e, i)}
+// 							className={i.id === selectedItem.value.id ? 'current' : ''}
+// 							data-attr={i.attr}
+// 						>
+// 							{defaultIcon && (
+// 								<div className="icon">
+// 									{getItemIcon(i)}
+// 								</div>
+// 							)}
+// 							<div className="info">
+// 								<span className="text">{i.text}</span>
+// 								{i.description && <span className="description">{i.description}</span>}
+// 							</div>
+// 						</li>
+// 					)) : null}
+// 				</ul>
+// 			</div>
+// 		</div>
+// 	);
+// };
+
+// export default Dropdown;

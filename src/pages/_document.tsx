@@ -1,7 +1,5 @@
-import Document, { Html, Main, NextScript, DocumentContext } from 'next/document'
+import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
-
-import Head from 'components/Layout/Head'
 
 class NextDocument extends Document {
 	static async getInitialProps(ctx: DocumentContext) {
@@ -31,12 +29,14 @@ class NextDocument extends Document {
 	}
 
 	render() {
+		const { styles } = this.props
 		return (
 			<Html lang="en">
-				<Head
-					pageTitle="Join react test"
-					pageDescription="Work with candidates."
-				/>
+				<Head>
+					{styles}
+					{/* Styles for rc-menu lib */}
+					<link rel="stylesheet" href="/static/styles/rc-menu.css" />
+				</Head>
 				<body>
 					<Main />
 					<NextScript />

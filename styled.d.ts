@@ -6,7 +6,10 @@ declare module 'styled-components' {
 			primary: string
 		}
 		font?: {
-			family?: string
+			family: string
+		}
+		images?: {
+			anonymous: string
 		}
 	}
 }

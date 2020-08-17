@@ -1,6 +1,8 @@
 import { useStaticRendering } from 'mobx-react'
 import { useMemo } from 'react'
 
+import { Candidate } from 'types/Candidate'
+
 import CandidatesStore from './candidatesStore'
 
 // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -8,13 +10,13 @@ useStaticRendering(typeof window === 'undefined')
 
 let store: any = null
 
-function initializeStore(initialData = null) {
-	const _store = store ?? new CandidatesStore()
+export const initializeStore = (initialData?: Candidate[]): CandidatesStore => {
+	const _store: CandidatesStore = store ?? new CandidatesStore()
 
 	// If your page has Next.js data fetching methods that use a Mobx store, it will
 	// get hydrated here, check `pages/ssg.js` and `pages/ssr.js` for more details
 	if (initialData) {
-		_store.hydrate(initialData)
+		_store.initServer(initialData)
 	}
 	// For SSG and SSR always create a new store
 	if (typeof window === 'undefined') return _store
@@ -24,7 +26,7 @@ function initializeStore(initialData = null) {
 	return _store
 }
 
-export function useStore(initialState: any) {
+export const useStore = (initialState?: Candidate[]) => {
 	const store = useMemo(() => initializeStore(initialState), [initialState])
 	return store
 }

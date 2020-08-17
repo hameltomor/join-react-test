@@ -5,14 +5,16 @@ import { useStore } from 'store/index'
 
 import theme from 'styles/theme'
 
-import 'styles/css/globals.css'
+import Layout from 'components/Layout'
 
 const NextApp = ({ Component, pageProps }: AppProps) => {
 	const store = useStore(pageProps.initialState)
 	return (
 		<ThemeProvider theme={theme}>
 			<MobxProvider store={store}>
-				<Component {...pageProps} />
+				<Layout>
+					<Component {...pageProps} />
+				</Layout>
 			</MobxProvider>
 		</ThemeProvider>
 	)
