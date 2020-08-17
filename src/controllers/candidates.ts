@@ -48,11 +48,11 @@ class CandidatesController {
 
 	/**
 	 * Returns the candidate by id
-	 * @param {(string | number)} id
+	 * @param {string} id
 	 * @returns {Promise<Candidate>}
 	 * @memberof CandidatesController
 	 */
-	async getById(id: string | number): Promise<Candidate> {
+	async getById(id: string): Promise<Candidate> {
 		const { data: candidate } = await this.restdbApi.get(`/${id}`) as ApiResponse<Candidate>
 
 		if (!candidate || !candidate._id) {
@@ -80,11 +80,11 @@ class CandidatesController {
 
 	/**
 	 * Deletes the candidate by id
-	 * @param {Candidate} rawCandidate
+	 * @param {string} id
 	 * @returns {Promise<Candidate>}
 	 * @memberof CandidatesController
 	 */
-	async delete(id: string | number): Promise<void> {
+	async delete(id: string): Promise<void> {
 		await this.restdbApi.delete(`/${id}`) as ApiResponse<Candidate>
 	}
 

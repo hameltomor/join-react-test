@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 const Img = styled.img`
-	width: 64px;
 	height: auto;
 	max-width: 100%;
 	display: block;
@@ -10,7 +9,7 @@ const Img = styled.img`
 
 const Logo = () => (
 	<Img
-		src="/static/icons/logo.svg"
+		src="/static/icons/logo-grey.svg"
 		alt="Join Logo"
 	/>
 );

@@ -2,12 +2,13 @@ import { create as init, ApiResponse } from 'apisauce';
 
 import { Candidate } from 'types/Candidate'
 
-const { API_URL } = process.env;
+const { REST_DB_API, REST_DB_KEY } = process.env;
 
 const API = init({
-	baseURL: `${API_URL || ''}/api`,
+	baseURL: `${REST_DB_API}/rest`,
 	headers: {
 		'Content-Type': 'application/json',
+		'x-apikey': REST_DB_KEY
 	},
 });
 
@@ -16,7 +17,7 @@ export const getAll = async (): Promise<Candidate[]> => {
 	return candidates;
 };
 
-export const getById = async (id: string | number): Promise<Candidate> => {
+export const getById = async (id: string): Promise<Candidate> => {
 	const { data: candidate } = await API.get(`/candidates/${id}`) as ApiResponse<Candidate>;
 
 	if (!candidate || !candidate._id) {
@@ -46,6 +47,6 @@ export const update = async (candidate: Candidate): Promise<Candidate> => {
 	return candidate;
 };
 
-export const remove = async (id: string | number): Promise<void> => {
+export const remove = async (id: string): Promise<void> => {
 	await API.delete(`/candidates/${id}`) as ApiResponse<void>;
 };

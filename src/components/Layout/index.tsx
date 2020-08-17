@@ -1,15 +1,19 @@
 import React from 'react'
 import { Grid } from 'react-styled-flexboxgrid'
 
+import GlobalStyle from 'styles/css/global'
+
 import Header from './Header'
-import Spinner from './Spinner'
+// import Spinner from './Spinner'
+import Main from './Main'
 import Footer from './Footer'
 
 const Layout: React.FC = ({ children }) => (
-	<Grid fluid>
+	<Grid fluid={true}>
+		<GlobalStyle />
 		<Header />
-		<Spinner />
-		<main>{children}</main>
+		{/* <Spinner /> on loading */}
+		<Main>{children}</Main>
 		<Footer />
 	</Grid>
 )
