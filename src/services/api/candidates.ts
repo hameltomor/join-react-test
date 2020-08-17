@@ -2,13 +2,11 @@ import { create as init, ApiResponse } from 'apisauce';
 
 import { Candidate } from 'types/Candidate'
 
-const { REST_DB_API, REST_DB_KEY } = process.env;
-
 const API = init({
-	baseURL: `${REST_DB_API}/rest`,
+	baseURL: `${process.env.REST_DB_API}/rest`,
 	headers: {
 		'Content-Type': 'application/json',
-		'x-apikey': REST_DB_KEY
+		'x-apikey': process.env.REST_DB_KEY
 	},
 });
 
