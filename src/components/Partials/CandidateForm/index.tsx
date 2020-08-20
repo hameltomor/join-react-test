@@ -3,9 +3,10 @@ import { Row, Col } from 'react-styled-flexboxgrid'
 import { useFormik } from 'formik'
 
 import Form from 'components/Form'
-import Input from 'src/components/Form/Input';
-import Button from 'src/components/Form/Button';
-import Checkbox from 'src/components/Form/Checkbox';
+import Input from 'components/Form/Input';
+import Label from 'components/Form/Label';
+import Button from 'components/Form/Button';
+import Checkbox from 'components/Form/Checkbox';
 
 import { Candidate } from 'types/Candidate'
 
@@ -77,6 +78,12 @@ const CandidateForm: React.FC<ICandidateForm> = (props) => {
 						onChange={formik.handleChange}
 						value={formik.values.email}
 					/>
+					<Label
+						htmlFor="password"
+						className="label"
+					>
+						Email
+					</Label>
 				</Col>
 			</Row>
 			<Row>
@@ -89,6 +96,12 @@ const CandidateForm: React.FC<ICandidateForm> = (props) => {
 						onChange={formik.handleChange}
 						value={formik.values.password}
 					/>
+					<Label
+						htmlFor="password"
+						className="label"
+					>
+						Password
+					</Label>
 				</Col>
 			</Row>
 			<Row>
@@ -101,6 +114,12 @@ const CandidateForm: React.FC<ICandidateForm> = (props) => {
 						onChange={formik.handleChange}
 						value={formik.values.firstName}
 					/>
+					<Label
+						htmlFor="firstName"
+						className="label"
+					>
+						First name
+					</Label>
 				</Col>
 				<Col xs={6}>
 					<Input
@@ -111,6 +130,12 @@ const CandidateForm: React.FC<ICandidateForm> = (props) => {
 						onChange={formik.handleChange}
 						value={formik.values.lastName}
 					/>
+					<Label
+						htmlFor="lastName"
+						className="label"
+					>
+						Last name
+					</Label>
 				</Col>
 			</Row>
 			<Row>
@@ -123,6 +148,12 @@ const CandidateForm: React.FC<ICandidateForm> = (props) => {
 						onChange={formik.handleChange}
 						value={formik.values.phone}
 					/>
+					<Label
+						htmlFor="phone"
+						className="label"
+					>
+						Phone
+					</Label>
 				</Col>
 			</Row>
 			<Row>

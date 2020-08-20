@@ -5,9 +5,15 @@ import { observer, useObserver } from 'mobx-react-lite'
 
 import { useStore } from 'store/index'
 
+import Head, { IHead } from 'components/Layout/Head'
 import CandidateForm from 'components/Partials/CandidateForm'
 
 import { Candidate } from 'types/Candidate'
+
+const headProps: IHead = {
+	pageTitle: 'Candidate page | Form',
+	pageDescription: 'Create a new application to the company.',
+}
 
 const CandidatePage: NextPage = observer(() => {
 	const candidatesStore = useStore()
@@ -21,7 +27,8 @@ const CandidatePage: NextPage = observer(() => {
 
 	return useObserver(() => (
 		<section>
-			<h2>Сandidate page</h2>
+			<Head {...headProps} />
+			<h1>Сandidate page</h1>
 			<CandidateForm onFormSubmit={handleOnCreate} />
 		</section>
 	))

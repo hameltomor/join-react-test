@@ -25,7 +25,7 @@ const Wrapper = styled(Row)`
 interface ICandidateItem {
 	candidate: Candidate
 
-	updateCandidate: (candidate: Candidate) => Promise<any>
+	updateCandidate: (candidate: Candidate) => Promise<Candidate | undefined>
 	removeCandidate: (id: string) => Promise<void>
 }
 
@@ -39,30 +39,14 @@ const CandidateItem: React.FC<ICandidateItem> = (props) => {
 	const { avatar } = candidate
 	const avatarUrl = avatar && avatar.length ? avatar : theme.images?.anonymous
 
-	const onDropdownChange = async (selectedItem: any) => {
-		let state: CandidateState
-		switch (Number(selectedItem.key)) {
-			case 1:
-				await removeCandidate(candidate._id)
-				return
-			case 2:
-				state = CandidateState.submitted
-				break;
-			case 3:
-				state = CandidateState.inReview
-				break;
-			case 4:
-				state = CandidateState.notFit
-				break;
-			case 5:
-				state = CandidateState.hired
-				break;
-			default:
-				state = CandidateState.submitted
-				break;
-		}
-		const updateDate: Candidate = { ...candidate, state }
-		await updateCandidate(updateDate);
+	const handleOnDelete = async () => {
+		await removeCandidate(candidate._id)
+	}
+
+
+	const handleCandidateState = async (state: CandidateState) => {
+		const updatedCandidate: Candidate = { ...candidate, state }
+		await updateCandidate(updatedCandidate);
 	}
 
 	return (
@@ -84,7 +68,7 @@ const CandidateItem: React.FC<ICandidateItem> = (props) => {
 				<Status state={candidate.state} />
 			</Col>
 			<Col xs={4}>
-				<Dropdown handleOnSelect={onDropdownChange} />
+				<Dropdown onCandidateStateChanges={handleCandidateState} onDelete={handleOnDelete} />
 			</Col>
 		</Wrapper>
 	)

@@ -7,6 +7,8 @@ import theme from 'styles/theme'
 
 import Layout from 'components/Layout'
 
+import 'styles/css/global.css'
+
 const NextApp = ({ Component, pageProps }: AppProps) => {
 	const store = useStore(pageProps.initialState)
 	return (

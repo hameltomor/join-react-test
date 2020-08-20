@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { CandidateState } from 'types/Candidate'
 
 const StyledStatus = styled.div`
-
+	text-transform: uppercase;
 `
 
 interface IStatus {

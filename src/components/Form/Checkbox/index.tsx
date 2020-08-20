@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import { Primitive } from 'types/Helpers'
+
 const StyledCheckbox = styled.input`
   visibility: hidden;
 	position: absolute;
@@ -45,7 +47,6 @@ const Checkmark = styled.span`
 `
 
 const StyledLabel = styled.label`
-	margin-top: 20px;
   display: block;
   font-size: 20px;
   font-weight: 300;
@@ -58,27 +59,28 @@ const StyledLabel = styled.label`
 
 interface ICheckbox {
 	name: string;
-	value: any;
-	formikValue: any;
-	label?: string;
+	value: Primitive;
+	formikValue: Primitive;
+	label?: string | number;
 
-	onChange?: any;
-	onBlur?: any;
+	onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+	onBlur?: (event: React.FocusEvent<HTMLInputElement>) => void;
 }
 
 const Checkbox: React.FunctionComponent<ICheckbox> = (props) => {
 	const {
 		name,
 		label,
+		value,
 		formikValue,
 		...inputProps
 	} = props;
 
 	return (
 		<StyledLabel className="checkbox">
-			<StyledCheckbox id={name} name={name} type="checkbox" checked={formikValue === inputProps.value} {...inputProps} />
+			<StyledCheckbox id={name} name={name} type="checkbox" checked={formikValue === value} value={value.toString()} {...inputProps} />
 			<Checkmark className="checkmark" />
-			<span className="label">{label || inputProps.value}</span>
+			<span className="label">{label || value}</span>
 		</StyledLabel>
 	);
 }
