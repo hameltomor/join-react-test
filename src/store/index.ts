@@ -1,6 +1,7 @@
 import { useStaticRendering } from 'mobx-react'
 import { useMemo } from 'react'
 
+import { Nullable } from 'types/Helpers'
 import { Candidate } from 'types/Candidate'
 
 import CandidatesStore from './candidatesStore'
@@ -8,7 +9,7 @@ import CandidatesStore from './candidatesStore'
 // eslint-disable-next-line react-hooks/rules-of-hooks
 useStaticRendering(typeof window === 'undefined')
 
-let store: any = null
+let store: Nullable<CandidatesStore> = null
 
 export const initializeStore = (initialData?: Candidate[]): CandidatesStore => {
 	const _store: CandidatesStore = store ?? new CandidatesStore()

@@ -1,4 +1,4 @@
-import Document, { Html, Head, Main, NextScript, DocumentContext } from 'next/document'
+import Document, { DocumentContext } from 'next/document'
 import { ServerStyleSheet } from 'styled-components'
 
 class NextDocument extends Document {
@@ -26,23 +26,6 @@ class NextDocument extends Document {
 		} finally {
 			sheet.seal()
 		}
-	}
-
-	render() {
-		const { styles } = this.props
-		return (
-			<Html lang="en">
-				<Head>
-					{styles}
-					{/* Styles for rc-menu lib */}
-					<link rel="stylesheet" href="/static/styles/rc-menu.css" />
-				</Head>
-				<body>
-					<Main />
-					<NextScript />
-				</body>
-			</Html>
-		)
 	}
 }
 

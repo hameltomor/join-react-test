@@ -3,8 +3,9 @@ import 'mobx-react-lite/batchingForReactDom'
 
 import * as CandidatesApi from 'services/api/candidates'
 
-import { Candidate } from 'types/Candidate'
 import { StateTypes } from 'types/State'
+import { Candidate } from 'types/Candidate'
+import { KeyObjectMap, Primitive } from 'types/Helpers'
 
 class CandidatesStore {
 	@observable candidatesStore: ObservableMap<string, Candidate>
@@ -21,13 +22,15 @@ class CandidatesStore {
 		for (const c of this.candidatesStore.values()) {
 			let score = 0
 			for (const key in c) {
-				if (!valuableKeys.includes(key)) {
+				if (!valuableKeys.includes(key) || !c.hasOwnProperty(key)) {
 					continue
 				}
-				if (!c.hasOwnProperty(key)) {
+
+				const field = (c as KeyObjectMap<Primitive | Date>)[key]
+				if (typeof field !== 'string') {
 					continue
 				}
-				const field = (c as any)[key]
+
 				if (field && field.length) {
 					score += key === 'avatar' ? 20 : 10
 				}

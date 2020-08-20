@@ -1,9 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
-
 import Logo from './parts/Logo'
-// import Link from './parts/Link'
 
 const StyledFooter = styled.footer`
 	display: flex;

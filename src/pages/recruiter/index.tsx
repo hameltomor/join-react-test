@@ -4,11 +4,17 @@ import { observer, useObserver } from 'mobx-react-lite'
 
 import { useStore, initializeStore } from 'store/index'
 
+import Head, { IHead } from 'components/Layout/Head'
 import CandidateItem from 'components/Partials/CandidateItem'
 
 import * as CandidatesApi from 'services/api/candidates'
 
 import { Candidate } from 'types/Candidate'
+
+const headProps: IHead = {
+	pageTitle: 'Recruiter page | List',
+	pageDescription: 'Review list of applications.',
+}
 
 interface IRecruiter {
 	candidates: Candidate[]
@@ -19,7 +25,8 @@ const Recruiter: NextPage<IRecruiter> = observer((props) => {
 	const { candidates, updateCandidate, removeCandidate } = candidatesStore
 	return useObserver(() => (
 		<section>
-			<h2>Recruiter page: {candidates.length} applications</h2>
+			<Head {...headProps} />
+			<h1>Recruiter page: {candidates.length} applications</h1>
 			{candidates.map(c => <CandidateItem
 				key={c._id}
 				candidate={c}

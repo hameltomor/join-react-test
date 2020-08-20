@@ -18,8 +18,11 @@ const StyledHeader = styled.header`
 	margin-right: -2rem;
 	box-shadow: rgb(228, 231, 235) 0px 1.2px 0px;
 	width: 100%;
-`
 
+	& > div {
+		align-items: center;
+	}
+`
 
 const Header: React.FC = () => {
 	return (

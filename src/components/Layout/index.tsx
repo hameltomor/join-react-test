@@ -1,21 +1,23 @@
 import React from 'react'
+import styled from 'styled-components'
 import { Grid } from 'react-styled-flexboxgrid'
-
-import GlobalStyle from 'styles/css/global'
 
 import Header from './Header'
 // import Spinner from './Spinner'
 import Main from './Main'
 import Footer from './Footer'
 
+const StyledGrid = styled(Grid)`
+	background-color: #fafbfd
+`
+
 const Layout: React.FC = ({ children }) => (
-	<Grid fluid={true}>
-		<GlobalStyle />
+	<StyledGrid fluid={true}>
 		<Header />
 		{/* <Spinner /> on loading */}
 		<Main>{children}</Main>
 		<Footer />
-	</Grid>
+	</StyledGrid>
 )
 
 export default Layout
